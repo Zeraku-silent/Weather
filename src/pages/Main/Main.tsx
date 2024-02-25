@@ -1,1 +1,3 @@
-export const Main = () => <>Weather</>;
+export const Main = () => {
+  return <>Weather</>;
+};
