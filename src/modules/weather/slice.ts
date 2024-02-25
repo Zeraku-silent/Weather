@@ -6,6 +6,7 @@ export const weatherSlice = createSlice({
   name: SLICE_NAME,
   initialState: "beeba",
   reducers: {
-    increment: (state, action: PayloadAction<number>) => state + action.payload,
+    setText: (state, action: PayloadAction<string>) =>
+      `${state} ${action.payload}`,
   },
 });
