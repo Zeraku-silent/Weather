@@ -1,6 +1,10 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
+import { CitiesState } from "./types";
+
 export const SLICE_NAME = "cities";
+
+
 
 const initialState ={
   cities:[],
@@ -13,8 +17,8 @@ export const citiesSlice = createSlice({
   reducers: {
     setText: (state, action: PayloadAction<string>) =>
       `${state} ${action.payload}`,
+      requestCities:()=>,
       setCities:()=>,
-      requestCities:()=>
   },
 });
 

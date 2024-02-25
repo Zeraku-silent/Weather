@@ -1,12 +1,28 @@
 import { useSelector } from "react-redux";
-import { useCallback } from "react";
+import { FC, PropsWithChildren, useCallback } from "react";
 
 import { RootState, useDispatch } from "../../modules";
 import { citiesActions } from "../../modules/cities/slice";
 
-export const Main = () => {
-  const aboba = useSelector((state: RootState) => state.cities);
+import { Container } from "./styled";
+
+interface MainProps {
+  text: string;
+}
+
+export const Main: FC<PropsWithChildren<MainProps>> = ({ text }) => {
   const dispatch = useDispatch();
 
-  return <>{aboba}</>;
+  const aboba = useSelector((state: RootState) => state.cities);
+
+  const sayZhopa = useCallback(() => {
+    dispatch(citiesActions.setText("zhopa"));
+  }, [dispatch]);
+
+  return (
+    <Container>
+      <button onClick={sayZhopa}>Say Zhopa!</button>
+      {aboba}
+    </Container>
+  );
 };
