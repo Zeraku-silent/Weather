@@ -1,17 +1,24 @@
-import { CITIES_API } from './../../core/api';
 import { call, put, takeLatest } from "redux-saga/effects";
 
-import { CITIES_API } from "../../core/api";
+import { CITIES_API } from "../../core/api/api";
 
-import {
-  GET_CITIES_REQUEST,
-  getCitiesSuccess,
-  getCitiesError,
-} from "./cities.actions";
+import { citiesActions } from "./slice";
 
+function* getCities({ cityName }) {
+  try {
+    const response = yield call(CITIES_API.post, "./places/query", {
+      type: "city",
+      query: "${cityName",
+    });
 
-function* getCities({cityName}) {
-    try {
-        const response = yield call(CITIES_API.post, './places')
-    }
+    console.log(response);
+
+    yield put(citiesActions.setCities(response.data.hits));
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export function* watchGetCities() {
+  yield takeLatest(citiesActions.requestCities.type, getCities);
 }

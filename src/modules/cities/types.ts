@@ -1,3 +1,5 @@
+import { REQUEST_STATUS } from "../../core/api/types";
+
 export interface City {
   lat: number;
   lng: number;
@@ -5,5 +7,5 @@ export interface City {
 
 export interface CitiesState {
   cities: City[];
-  isLoading: boolean;
+  status: REQUEST_STATUS;
 }

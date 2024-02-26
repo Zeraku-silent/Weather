@@ -1,24 +1,27 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { CitiesState } from "./types";
+import { REQUEST_STATUS } from "../../core/api/types";
+
+import { CitiesState, City } from "./types";
 
 export const SLICE_NAME = "cities";
 
-
-
-const initialState ={
-  cities:[],
-  isLoading: false,
-}
+const initialState: CitiesState = {
+  cities: [],
+  status: REQUEST_STATUS.INITIAL,
+};
 
 export const citiesSlice = createSlice({
   name: SLICE_NAME,
-  initialState: "aboba",
+  initialState,
   reducers: {
-    setText: (state, action: PayloadAction<string>) =>
-      `${state} ${action.payload}`,
-      requestCities:()=>,
-      setCities:()=>,
+    requestCities: ({ status }) => {
+      status = REQUEST_STATUS.LOADING;
+    },
+    setCities: ({ status, cities }, action: PayloadAction<City[]>) => {
+      status = REQUEST_STATUS.SUCCESS;
+      cities = action.payload;
+    },
   },
 });
 
