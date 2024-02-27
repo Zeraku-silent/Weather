@@ -13,16 +13,18 @@ interface MainProps {
 export const Main: FC<PropsWithChildren<MainProps>> = ({ text }) => {
   const dispatch = useDispatch();
 
-  const aboba = useSelector((state: RootState) => state.cities);
+  const cities = useSelector((state: RootState) => state.cities.items);
 
-  const sayZhopa = useCallback(() => {
-    dispatch(citiesActions.setText("zhopa"));
+  const requestCity = useCallback(() => {
+    dispatch(citiesActions.requestCities("Москва"));
   }, [dispatch]);
 
   return (
+    //@ts-ignore
     <Container>
-      <button onClick={sayZhopa}>Say Zhopa!</button>
-      {aboba}
+      <button onClick={requestCity}>Get Moscow</button>
+      <br />
+      {cities?.map((city) => city.id)}
     </Container>
   );
 };

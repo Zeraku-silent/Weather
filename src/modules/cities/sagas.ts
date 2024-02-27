@@ -4,11 +4,13 @@ import { CITIES_API } from "../../core/api/api";
 
 import { citiesActions } from "./slice";
 
-function* getCities({ cityName }) {
+//@ts-ignore
+function* getCities({ payload }) {
   try {
-    const response = yield call(CITIES_API.post, "./places/query", {
+    //@ts-ignore
+    const response = yield call(CITIES_API.post, "/places/query", {
       type: "city",
-      query: "${cityName",
+      query: `${payload}`,
     });
 
     console.log(response);
@@ -20,5 +22,6 @@ function* getCities({ cityName }) {
 }
 
 export function* watchGetCities() {
+  //@ts-ignore
   yield takeLatest(citiesActions.requestCities.type, getCities);
 }

@@ -7,7 +7,7 @@ import { CitiesState, City } from "./types";
 export const SLICE_NAME = "cities";
 
 const initialState: CitiesState = {
-  cities: [],
+  items: [],
   status: REQUEST_STATUS.INITIAL,
 };
 
@@ -15,12 +15,12 @@ export const citiesSlice = createSlice({
   name: SLICE_NAME,
   initialState,
   reducers: {
-    requestCities: ({ status }) => {
+    requestCities: ({ status }, action: PayloadAction<string>) => {
       status = REQUEST_STATUS.LOADING;
     },
-    setCities: ({ status, cities }, action: PayloadAction<City[]>) => {
+    setCities: ({ status, items }, action: PayloadAction<City[]>) => {
       status = REQUEST_STATUS.SUCCESS;
-      cities = action.payload;
+      items = action.payload;
     },
   },
 });
