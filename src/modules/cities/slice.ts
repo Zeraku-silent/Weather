@@ -15,12 +15,12 @@ export const citiesSlice = createSlice({
   name: SLICE_NAME,
   initialState,
   reducers: {
-    requestCities: ({ status }, action: PayloadAction<string>) => {
-      status = REQUEST_STATUS.LOADING;
+    requestCities: (state, action: PayloadAction<string>) => {
+      state.status = REQUEST_STATUS.LOADING;
     },
-    setCities: ({ status, items }, action: PayloadAction<City[]>) => {
-      status = REQUEST_STATUS.SUCCESS;
-      items = action.payload;
+    setCities: (state, action: PayloadAction<City[]>) => {
+      state.status = REQUEST_STATUS.SUCCESS;
+      state.items = action.payload;
     },
   },
 });

@@ -1,9 +1,14 @@
 import { REQUEST_STATUS } from "../../core/api/types";
 
 export interface City {
-  id: string;
-  lat: number;
-  lng: number;
+  id: number;
+  countryCode: string;
+  countryName: string;
+  latitude: number;
+  longitude: number;
+  name: string;
+  stateCode: string;
+  stateName: string;
 }
 
 export interface CitiesState {
