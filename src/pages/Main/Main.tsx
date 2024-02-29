@@ -4,7 +4,7 @@ import { FC, PropsWithChildren, useCallback } from "react";
 import { RootState, useDispatch } from "../../modules";
 import { citiesActions } from "../../modules/cities/slice";
 
-import { Container } from "./styled";
+import { Container, Item } from "./styled";
 
 interface MainProps {
   text: string;
@@ -16,7 +16,7 @@ export const Main: FC<PropsWithChildren<MainProps>> = ({ text }) => {
   const cities = useSelector((state: RootState) => state.cities.items);
 
   const requestCity = useCallback(() => {
-    dispatch(citiesActions.requestCities("Москва"));
+    dispatch(citiesActions.requestCities("Мос"));
   }, [dispatch]);
 
   return (
@@ -24,8 +24,8 @@ export const Main: FC<PropsWithChildren<MainProps>> = ({ text }) => {
     <Container>
       <button onClick={requestCity}>Get Moscow</button>
       <br />
-      {cities?.map((city) => (
-        <p key={city.name}>{city.name}</p>
+      {cities?.map((city, i) => (
+        <Item key={`${city.locale_names.ru} ${i}`}>{city.locale_names.ru}</Item>
       ))}
     </Container>
   );
