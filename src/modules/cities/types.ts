@@ -1,9 +1,10 @@
 import { REQUEST_STATUS } from "../../core/api/types";
 
 export interface City {
-  locale_names: {
+  local_names: {
     ru: string;
   };
+  name: string;
   lat: number;
   lng: number;
 }

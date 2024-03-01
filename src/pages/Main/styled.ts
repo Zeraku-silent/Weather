@@ -5,4 +5,4 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
-export const Item = styled.div``;
+export const Item = styled.button``;

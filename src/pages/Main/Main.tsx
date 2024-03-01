@@ -25,7 +25,9 @@ export const Main: FC<PropsWithChildren<MainProps>> = ({ text }) => {
       <button onClick={requestCity}>Get Moscow</button>
       <br />
       {cities?.map((city, i) => (
-        <Item key={`${city.locale_names.ru} ${i}`}>{city.locale_names.ru}</Item>
+        <Item key={`${city.name} ${i}`} onClick={() => console.log(city.name)}>
+          {city.name}
+        </Item>
       ))}
     </Container>
   );

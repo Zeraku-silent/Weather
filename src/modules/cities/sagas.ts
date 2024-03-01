@@ -1,4 +1,4 @@
-import { put, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest } from "redux-saga/effects";
 
 // import { CITIES_API } from "../../core/api/api";
 
@@ -9,16 +9,14 @@ import { CITIES_API } from "../../core";
 function* getCities({ payload }) {
   try {
     //@ts-ignore
-    const response = yield (CITIES_API.get,
-    `?q=${payload}&appid=884360aca03bb2188beeab6cdb2bc93a`,
-    {
-      type: "city",
-      query: `${payload}`,
-    });
+    const response = yield call(
+      CITIES_API.get,
+      `/direct?q=${payload}&limit=10&appid=e0272992c9e156a1a2e599e35c2d335e`
+    );
 
     console.log(response);
-    //@ts-ignore
-    yield put(citiesActions.setCities(response.data.hits));
+
+    yield put(citiesActions.setCities(response.data));
   } catch (error) {
     console.error(error);
   }
