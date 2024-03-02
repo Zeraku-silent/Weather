@@ -1,6 +1,17 @@
-import React from "react";
-import { Main } from "../../pages";
+import { Routes, Route, Navigate } from "react-router-dom";
+
+import { Main, Weather } from "../../pages";
+
+import { Container } from "./styled";
 
 export const App = () => {
-  return <Main text="zhopa" />;
+  return (
+    <Container>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/weather/:id" element={<Weather />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Container>
+  );
 };

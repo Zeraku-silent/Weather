@@ -7,6 +7,7 @@ import { citiesSlice, SLICE_NAME as CITIES } from "./cities/slice";
 import { weatherSlice, SLICE_NAME as WEATHER } from "./weather/slice";
 
 import { watchGetCities as watchGetCitiesSaga } from "./cities/sagas";
+import { watchGetweather as watchGetWeatherSaga } from "./weather/sagas";
 
 export const rootReducer = combineReducers({
   [CITIES]: citiesSlice.reducer,
@@ -14,7 +15,7 @@ export const rootReducer = combineReducers({
 });
 
 function* rootSaga() {
-  yield all([watchGetCitiesSaga()]);
+  yield all([watchGetCitiesSaga(), watchGetWeatherSaga()]);
 }
 
 const sagaMiddleware = createSagaMiddleware();

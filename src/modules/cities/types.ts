@@ -6,7 +6,7 @@ export interface City {
   };
   name: string;
   lat: number;
-  lng: number;
+  lon: number;
 }
 
 export interface CitiesState {
