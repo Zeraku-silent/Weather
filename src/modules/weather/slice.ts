@@ -26,3 +26,4 @@ export const weatherSlice = createSlice({
 });
 
 export const weatherActions = weatherSlice.actions;
+export const weatherSelectors = weatherSlice.selectors;

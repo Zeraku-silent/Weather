@@ -14,14 +14,12 @@ function* getWeather({ payload: { name, lat, lon, navigate } }) {
       `/weather?lat=${lat}&lon=${lon}&units=metric&appid=e0272992c9e156a1a2e599e35c2d335e`
     );
 
-    const updatedWeather = { ...response, name };
-
-    console.log(response);
+    const updatedWeather = { ...response.data, id: name, name };
 
     yield put(weatherActions.setWeather(updatedWeather));
 
     if (navigate) {
-      navigate(`/weather/${updatedWeather.name}?lat=${lat}&lon=${lon}`);
+      navigate(`/weather/${updatedWeather.id}?lat=${lat}&lon=${lon}`);
     }
   } catch (error) {
     console.error(error);
