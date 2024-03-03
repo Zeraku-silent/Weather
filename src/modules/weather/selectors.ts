@@ -1,13 +1,17 @@
 import { createSelector } from "@reduxjs/toolkit";
 
+import { RootState } from "./../index";
+
 const getId = (_: unknown, id: string) => id;
 
-const getWeather = (state) => state.weather.items;
+const getWeathers = (state: RootState) => state.weather.items;
 
 export const getWeatherById = createSelector(
   getWeathers,
   getId,
   (weathers, id) => {
-    const weather = weathers.find((weather) => weather.id === id);
+    const weather = weathers?.find((weather) => weather.id === id);
+
+    return weather ?? null;
   }
 );

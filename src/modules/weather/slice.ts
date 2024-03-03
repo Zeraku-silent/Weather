@@ -18,12 +18,11 @@ export const weatherSlice = createSlice({
     requestWeather: (state, action: PayloadAction<WeatherRequest>) => {
       state.status = REQUEST_STATUS.LOADING;
     },
-    setWeather: (state, action: PayloadAction<Weather[]>) => {
+    setWeather: (state, action: PayloadAction<Weather>) => {
       state.status = REQUEST_STATUS.SUCCESS;
-      state.items = action.payload;
+      state.items.push(action.payload);
     },
   },
 });
 
 export const weatherActions = weatherSlice.actions;
-export const weatherSelectors = weatherSlice.selectors;

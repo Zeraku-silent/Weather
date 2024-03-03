@@ -6,7 +6,7 @@ import { weatherActions } from "./slice";
 import { WEATHER_API } from "../../core";
 
 //@ts-ignore
-function* getWeather({ payload: { name, lat, lon, navigate } }) {
+function* getWeather({ payload: { id, lat, lon, navigate } }) {
   try {
     //@ts-ignore
     const response = yield call(
@@ -14,7 +14,7 @@ function* getWeather({ payload: { name, lat, lon, navigate } }) {
       `/weather?lat=${lat}&lon=${lon}&units=metric&appid=e0272992c9e156a1a2e599e35c2d335e`
     );
 
-    const updatedWeather = { ...response.data, id: name, name };
+    const updatedWeather = { ...response.data, id, name: id };
 
     yield put(weatherActions.setWeather(updatedWeather));
 

@@ -22,6 +22,10 @@ export const citiesSlice = createSlice({
       state.status = REQUEST_STATUS.SUCCESS;
       state.items = action.payload;
     },
+    clearCities: (state) => {
+      state.status = REQUEST_STATUS.INITIAL;
+      state.items = [];
+    },
   },
 });
 
